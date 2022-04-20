@@ -1,8 +1,14 @@
-name: npm test
-steps:
-- uses: actions/checkout@v3
-- uses: actions/setup-node@v3
-  with:
-    node-version: '14'
-- run: yarn install
-- run: yarn test
+
+name: Test
+on: push
+jobs:
+  jest:
+    runs-on: ubuntu-latest
+    name: yarn install and test
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - run: yarn install
+      - run: yarn test
